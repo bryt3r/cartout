@@ -21,34 +21,14 @@ class ProductSeeder extends Seeder
             'books',
         ];
        
-        for ($i=0; $i < 5; $i++) { 
+        for ($i=0; $i < 20; $i++) {
+            $cat_name = $categories[rand(0,4)];
             Product::factory()->create([
-                'product_category_name' => $categories[$i],
-                'product_category_id' => $i + 1,
+                'product_category_name' => $cat_name,
+                'product_category_id' => array_search($cat_name, $categories) + 1,
                 ]
             );
        }
-        for ($i=0; $i < 5; $i++) { 
-            Product::factory()->create([
-                'product_category_name' => $categories[$i],
-                'product_category_id' => $i + 1,
-                ]
-            );
-       }
-        for ($i=0; $i < 5; $i++) { 
-            Product::factory()->create([
-                'product_category_name' => $categories[$i],
-                'product_category_id' => $i + 1,
-                ]
-            );
-       }
-        for ($i=0; $i < 5; $i++) { 
-            Product::factory()->create([
-                'product_category_name' => $categories[$i],
-                'product_category_id' => $i + 1,
-                ]
-            );
-       }
-        // Product::factory(20)->create();
+ 
     }
 }
