@@ -40,7 +40,7 @@ class SkuSeeder extends Seeder
             ],
         ];
 
-        for ($i = 0; $i < 40; $i++) {
+        for ($i = 0; $i < 50; $i++) {
             $sku = Sku::factory()->create();
             $category = $sku->product->product_category_name;
             // $category = $sku->product->product_category->pluck('name');

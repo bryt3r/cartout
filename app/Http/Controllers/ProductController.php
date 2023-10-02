@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Sku;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -14,8 +15,13 @@ class ProductController extends Controller
     {
         return Product::with([
             'skus' => ['attributes']
-            ])
-            ->get();
+        ])->get()->groupBy('name');
+    }
+
+
+    public function skus()
+    {
+        return Sku::with('product', 'attributes')->get();
     }
 
     /**
@@ -37,9 +43,14 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $category, string $slug)
     {
-        //
+        return Product::where('product_category_name', $category)
+            ->where('slug', $slug)
+            ->with([
+                'skus' => ['attributes']
+            ])
+            ->get();
     }
 
     /**
