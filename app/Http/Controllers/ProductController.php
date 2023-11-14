@@ -13,9 +13,16 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return Product::with([
+        $productsGroup = Product::with([
             'skus' => ['attributes']
-        ])->get()->groupBy('name');
+        ])->get()->groupBy('product_category_name');
+        // dd($productsGroup);
+        $data = [
+            'products_group' => $productsGroup
+        ];
+
+        
+        return view('products.products')->with($data);
     }
 
 
