@@ -13,6 +13,13 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+          {{-- Custom CSS --}}
+          <link rel="stylesheet" href="{{ asset('css/style.css') }}" >
+     
+          <!-- Font Awesome CSS -->
+          <link rel="stylesheet" href="{{ asset('font_awesome/css/all.min.css') }}" >
+  
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">

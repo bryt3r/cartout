@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'products','controller' => ProductController::class,], function (){
     Route::get('/', 'index');
-    Route::get('/view/{category}/{slug}', 'show');
+    Route::get('/{category}/view_product/{slug}', 'show')->name('product.show');
     Route::get('/skus', 'skus');
 });
 

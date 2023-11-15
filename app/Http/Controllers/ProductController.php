@@ -15,12 +15,13 @@ class ProductController extends Controller
     {
         $productsGroup = Product::with([
             'skus' => ['attributes']
-        ])->get()->groupBy('product_category_name');
+        ])
+        ->get()
+        ->groupBy('product_category_name');
         // dd($productsGroup);
         $data = [
             'products_group' => $productsGroup
         ];
-
         
         return view('products.products')->with($data);
     }
@@ -52,12 +53,17 @@ class ProductController extends Controller
      */
     public function show(string $category, string $slug)
     {
-        return Product::where('product_category_name', $category)
+        $product = Product::where('product_category_name', $category)
             ->where('slug', $slug)
             ->with([
                 'skus' => ['attributes']
             ])
-            ->get();
+            ->first();
+        // return $product;
+        $data = [
+            'product' => $product
+        ];
+        return view('products.product')->with($data);
     }
 
     /**
