@@ -59,9 +59,17 @@ class ProductController extends Controller
                 'skus' => ['attributes']
             ])
             ->first();
-        // return $product;
+        $options = $product->skus->map(function ($sku) {
+            return $sku->attributes->pluck('pivot.value','name');
+        });
+
+        $attributeOptions = array_merge_recursive(...$options->toArray());
+        // array_unique($attributeOptions);
+        // dd($attributeOptions);
+        // return $product->skus;
         $data = [
-            'product' => $product
+            'product' => $product,
+            'attributeOptions' => $attributeOptions
         ];
         return view('products.product')->with($data);
     }

@@ -19,9 +19,22 @@
             </div>
             <div>
                 <i>Variants</i>
-                <div class="w-full flex flex-row flex-wrap items-center content-start">
-                    @foreach ($product->skus as $variant)
-                    <div class="bg-blue-500 p-2 mx-2 cursor-pointer">variant</div>  
+                <div class="w-full flex flex-col justify-around items-center content-start">
+                    @foreach ($product->attributes() as $attribute)
+                    <div class="mt-4">
+                        <label for="{{$attribute->name}}">{{$attribute->name}}</label>
+                        <select name="" id="">
+                            <option value="">Choose a {{$attribute->name}}</option>
+                            @if (is_array($attributeOptions[$attribute->name]))
+                                @foreach (array_unique($attributeOptions[$attribute->name]) as $option)
+                                <option value="{{$option}}">{{$option}}</option>  
+                                @endforeach
+                            @else
+                                <option value="{{$attributeOptions[$attribute->name]}}">{{$attributeOptions[$attribute->name]}}</option>
+                            @endif                                                
+                        </select>
+                    </div>
+                    {{-- <div class="bg-blue-500 p-2 mx-2 cursor-pointer">{{$attribute->name}}</div>   --}}
                     @endforeach
                 </div>
             </div>

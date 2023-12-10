@@ -17,4 +17,8 @@ class Product extends Model
     function skus() {
         return $this->hasMany(Sku::class);
     }
+
+    public function attributes() {
+        return $this->product_category->product_attributes;
+    }
 }
