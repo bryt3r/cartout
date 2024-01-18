@@ -9,7 +9,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    public function product_category()
+    public function productCategory()
     {
         return $this->belongsTo(ProductCategory::class);
     }
@@ -19,6 +19,6 @@ class Product extends Model
     }
 
     public function attributes() {
-        return $this->product_category->product_attributes;
+        return $this->productCategory->productAttributes;
     }
 }

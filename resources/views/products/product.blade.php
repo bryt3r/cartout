@@ -34,7 +34,6 @@
                             @endif                                                
                         </select>
                     </div>
-                    {{-- <div class="bg-blue-500 p-2 mx-2 cursor-pointer">{{$attribute->name}}</div>   --}}
                     @endforeach
                 </div>
             </div>

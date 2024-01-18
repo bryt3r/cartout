@@ -14,7 +14,7 @@ class Sku extends Model
         return $this->belongsTo(Product::class);
     }
 
-    public function attributes()
+    public function productAttributes()
     {
         return $this->belongsToMany(ProductAttribute::class)->withPivot('value');
     }
